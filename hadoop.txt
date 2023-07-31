@@ -1,0 +1,40 @@
+hadoop commands:
+
+1)sbin folder:
+-> start-dfs.sh
+-> start-yarn.sh
+-> jps
+		
+2)if 6 nodes dont appear then go to bin directory,open terminal
+-> hadoop namenode -format
+
+3)sbin:
+-> start-dfs.sh
+-> start-yarn.sh
+-> jps
+
+4)sbin: 
+->hdfs dfs -mkdir /folder_name
+
+5) go to home and create a input.txt file(touch input.txt) open a terminal in home
+
+6)sbin:
+->hadoop fs -put file_path /folder_name
+->yarn jar path_of_mapreduce_jar_file wordcount /folder_name /output_folder_name
+->hdfs dfs -cat /output_folder_name/part-r-00000
+
+7)
+->stop-all.sh
+
+
+scala commands:
+
+1) create file and add text 'amay.txt' (home directory)
+2) start spark using
+	>>   spark-shell
+	>>   var x=sc.textFile('amay.txt')
+	>>   var y=x.flatMap(_.split(" "))
+	>>   var z=y.map((_,1))
+	>>   var word_count=z.reduceByKey(_+_)
+	>>   word_count.saveAsTextFile("output1")
+	>>   word_count.foreach(println)
